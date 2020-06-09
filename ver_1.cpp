@@ -20,11 +20,12 @@ void PrintMatrix(float matrix[100][100], int row, int col) {
         for(int j=0;j<col;j++){
             cout<<matrix[i][j]<<"  ";
         }
+        cout<<endl;
     }
-    cout<<endl;
+    
 }
 
-void *AddMatrix(float mat1[100][100], float mat2[100][100], float* result[100][100], int row, int col){
+void AddMatrix(int row, int col, float mat1[100][100], float mat2[100][100], float result[100][100]){
 
     for(int i=0;i<row;i++){
         for(int j=0;j<col;j++){
@@ -41,7 +42,8 @@ int main() {
 
     NewMatrix(5,5,mat1);
     NewMatrix(5,5,mat2);
+    AddMatrix(5,5,mat1,mat2,result);
+    PrintMatrix(result,5,5);
 
-    
     return 0;
 }
