@@ -139,7 +139,7 @@ int main(){
         if(contMenu == 1){
             choice = OpMenu();
         }else if(contMenu == 2) {
-            InMenu(dim,choice);
+            InMenu(dim,choice,mat1,mat2);
         }else{
             exit(1);
         }
