@@ -12,7 +12,7 @@ void Zero(float matrix[100][100]){
     }
 }
 
-//
+//changes the values of the passed matrix to user input
 void NewMatrix(int row, int col, float matrix[100][100]) {
 
     for(int i=0; i<row; i++){
@@ -23,7 +23,7 @@ void NewMatrix(int row, int col, float matrix[100][100]) {
     }
 }
 
-
+//prints the matrix
 void PrintMatrix(int row, int col, float matrix[100][100]) {
     for(int i=0;i<row;i++){
         for(int j=0;j<col;j++){
@@ -34,7 +34,7 @@ void PrintMatrix(int row, int col, float matrix[100][100]) {
     
 }
 
-
+//adds two matrices
 void AddMatrix(int row, int col, float mat1[100][100], float mat2[100][100], float result[100][100]){
 
     for(int i=0;i<row;i++){
@@ -44,7 +44,7 @@ void AddMatrix(int row, int col, float mat1[100][100], float mat2[100][100], flo
     }
 }
 
-
+//subtract two matrices
 void SubMatrix(int row, int col, float mat1[100][100], float mat2[100][100], float result[100][100]){
 
     for(int i=0;i<row;i++){
@@ -54,7 +54,7 @@ void SubMatrix(int row, int col, float mat1[100][100], float mat2[100][100], flo
     }
 }
 
-
+//multiply two matrices
 void MulMatrix(int row, int col, int row2, int col2, float mat1[100][100], float mat2[100][100], float result[100][100]){
 
     for(int i=0;i<row;i++){
@@ -66,6 +66,7 @@ void MulMatrix(int row, int col, int row2, int col2, float mat1[100][100], float
     }
 }
 
+//menu for  the operation
 int OpMenu(){
     
     int choice;
@@ -78,6 +79,7 @@ int OpMenu(){
     return choice;
 }
 
+//menu for the size of the two matrices
 void InMenu(int dim[4], int choice,float mat1[100][100], float mat2[100][100]){
     
     bool isCorrect = true;
