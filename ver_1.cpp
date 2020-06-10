@@ -31,7 +31,6 @@ void PrintMatrix(int row, int col, float matrix[100][100]) {
         }
         cout<<endl;
     }
-    
 }
 
 //adds two matrices
