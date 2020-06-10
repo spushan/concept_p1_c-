@@ -128,13 +128,14 @@ int main(){
         case 2:
             SubMatrix(dim[0],dim[1],mat1,mat2,result);
             PrintMatrix(dim[0],dim[1],result);
+            break;
         case 3:
             MulMatrix(dim[0],dim[1],dim[2],dim[3],mat1,mat2,result);
             PrintMatrix(dim[0],dim[3],result);
         default:
             break;
         }
-        cout<<"[1] change operation [2] change matrix [3] quit";
+        cout<<"[1] change operation [2] change matrix [3] quit: ";
         cin>>contMenu;
         if(contMenu == 1){
             choice = OpMenu();
