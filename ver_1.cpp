@@ -3,21 +3,22 @@
 #include <stdlib.h>
 using namespace std;
 
+//changes all the value of the passed matrix to zero
 void Zero(float matrix[100][100]){
     for(int i=0;i<100;i++){
         for(int j=0;j<100;j++){
-            matrix[i][j]=0;
+            matrix[i][j] = 0;
         }
     }
 }
 
+//
 void NewMatrix(int row, int col, float matrix[100][100]) {
-    float num;
+
     for(int i=0; i<row; i++){
         for(int j=0; j<col; j++){
             cout<<"Enter value of ["<<i<<"]"<<"["<<j<<"]: ";
-            cin>>num;
-            matrix[i][j] = num;
+            cin>>matrix[i][j];
         }
     }
 }
