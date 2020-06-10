@@ -116,7 +116,7 @@ int main(){
     bool notQuit = true;
     int contMenu;
     choice = OpMenu();
-    InMenu(dim, choice,mat1);
+    InMenu(dim, choice,mat1,mat2);
     
     while(notQuit) {
         switch (choice)
