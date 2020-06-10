@@ -3,11 +3,19 @@
 #include <stdlib.h>
 using namespace std;
 
-void NewMatrix(int row, int col, float matrix[][100]) {
+void Zero(float matrix[100][100]){
+    for(int i=0;i<100;i++){
+        for(int j=0;j<100;j++){
+            matrix[i][j]=0;
+        }
+    }
+}
+
+void NewMatrix(int row, int col, float matrix[100][100]) {
     float num;
     for(int i=0; i<row; i++){
         for(int j=0; j<col; j++){
-            cout<<"Enter value of m["<<i<<"]"<<"["<<j<<"]: ";
+            cout<<"Enter value of ["<<i<<"]"<<"["<<j<<"]: ";
             cin>>num;
             matrix[i][j] = num;
         }
@@ -64,7 +72,7 @@ int OpMenu(){
     cout<<"[1] Add"<<endl;
     cout<<"[2] Subtract"<<endl;
     cout<<"[3] Multiply"<<endl;
-    cout<<"Please enter a choice: "<<endl;
+    cout<<"Please enter a choice: ";
     cin>>choice;
     return choice;
 }
@@ -124,12 +132,14 @@ int main(){
         case 1:
             AddMatrix(dim[0],dim[1],mat1,mat2,result);
             PrintMatrix(dim[0],dim[1],result);
+            result[100][100];
             break;
         case 2:
             SubMatrix(dim[0],dim[1],mat1,mat2,result);
             PrintMatrix(dim[0],dim[1],result);
             break;
         case 3:
+            Zero(result);
             MulMatrix(dim[0],dim[1],dim[2],dim[3],mat1,mat2,result);
             PrintMatrix(dim[0],dim[3],result);
         default:
@@ -137,6 +147,7 @@ int main(){
         }
         cout<<"[1] change operation [2] change matrix [3] quit: ";
         cin>>contMenu;
+        
         if(contMenu == 1){
             choice = OpMenu();
         }else if(contMenu == 2) {
