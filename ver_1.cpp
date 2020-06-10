@@ -79,7 +79,7 @@ int OpMenu(){
 }
 
 //menu for the size of the two matrices
-void InMenu(int dim[4], int choice,float mat1[100][100], float mat2[100][100]){
+void InMenu(int dim[4], int choice, float mat1[100][100], float mat2[100][100]){
     
     bool isCorrect = true;
     while(isCorrect){
@@ -109,9 +109,9 @@ void InMenu(int dim[4], int choice,float mat1[100][100], float mat2[100][100]){
         }    
     }
     cout<<"Input First Matrix"<<endl;
-    NewMatrix(dim[0],dim[1],mat1);
+    NewMatrix(dim[0], dim[1], mat1);
     cout<<"Input Second Matrix"<<endl;
-    NewMatrix(dim[2],dim[3],mat2);
+    NewMatrix(dim[2], dim[3], mat2);
 
 }
 
@@ -123,27 +123,26 @@ int main(){
     float result[100][100];
     int dim[4];
     int choice; 
-    bool notQuit = true;
     int contMenu;
     choice = OpMenu();
-    InMenu(dim, choice,mat1,mat2);
+    InMenu(dim, choice, mat1, mat2);
     
-    while(notQuit) {
+    while(true) {
         switch (choice)
         {
         case 1:
-            AddMatrix(dim[0],dim[1],mat1,mat2,result);
-            PrintMatrix(dim[0],dim[1],result);
-            result[100][100];
+            AddMatrix(dim[0], dim[1], mat1, mat2, result);
+            PrintMatrix(dim[0], dim[1], result);
             break;
         case 2:
-            SubMatrix(dim[0],dim[1],mat1,mat2,result);
-            PrintMatrix(dim[0],dim[1],result);
+            SubMatrix(dim[0], dim[1], mat1, mat2, result);
+            PrintMatrix(dim[0], dim[1], result);
             break;
         case 3:
             Zero(result);
-            MulMatrix(dim[0],dim[1],dim[2],dim[3],mat1,mat2,result);
-            PrintMatrix(dim[0],dim[3],result);
+            MulMatrix(dim[0], dim[1], dim[2], dim[3], mat1, mat2, result);
+            PrintMatrix(dim[0], dim[3], result);
+            break;
         default:
             break;
         }
@@ -153,7 +152,7 @@ int main(){
         if(contMenu == 1){
             choice = OpMenu();
         }else if(contMenu == 2) {
-            InMenu(dim,choice,mat1,mat2);
+            InMenu(dim, choice, mat1, mat2);
         }else{
             exit(1);
         }
