@@ -155,14 +155,17 @@ int main(){
         case 1:
             answer = AddMatrix(dim[0], dim[1], mat1, mat2);
             PrintMatrix(dim[0], dim[1], answer);
+            delete answer;
             break;
         case 2:
             answer = SubMatrix(dim[0], dim[1], mat1, mat2);
             PrintMatrix(dim[0], dim[1], answer);
+            delete answer;
             break;
         case 3:
             answer = MulMatrix(dim[0], dim[1], dim[2], dim[3], mat1, mat2);
             PrintMatrix(dim[0], dim[3], answer);
+            delete answer;
             break;
         default:
             break;
@@ -177,6 +180,8 @@ int main(){
             }
             choice = OpMenu();
         }else if(contMenu == 2) {
+            delete mat1;
+            delete mat2;
             InMenu(dim, choice);
             cout<<"Input First Matrix"<<endl;
             mat1 = NewMatrix(dim[0], dim[1]);

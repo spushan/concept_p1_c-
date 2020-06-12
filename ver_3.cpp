@@ -26,7 +26,8 @@ class Matrix {
         }
         
         ~Matrix(){
-            cout<<"decon"<<endl;
+            //no deconstructor used since the space is reused
+
         }
         
         void setMatrix(int row, int col){
@@ -167,8 +168,10 @@ int main(){
         
         if(contMenu == 1){
             if(dim[0] != dim[2] && dim[1] != dim[3]){
-                cout<<"Dimensions not equal for Add or Subtract! Exiting"<<endl;
-                exit(1);
+                cout<<"Dimensions not equal for Add or Subtract! Change Dimensions"<<endl;
+                InMenu(dim, choice);
+                mat1.setMatrix(dim[0],dim[1]);
+                mat2.setMatrix(dim[2],dim[3]);
             }
             choice = OpMenu();
         }else if(contMenu == 2) {
