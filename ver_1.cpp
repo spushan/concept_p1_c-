@@ -3,15 +3,6 @@
 #include <stdlib.h>
 using namespace std;
 
-//changes all the value of the passed matrix to zero
-void Zero(float matrix[100][100]){
-    for(int i=0;i<100;i++){
-        for(int j=0;j<100;j++){
-            matrix[i][j] = 0;
-        }
-    }
-}
-
 //changes the values of the passed matrix to user input
 void NewMatrix(int row, int col, float matrix[100][100]) {
 
@@ -141,7 +132,6 @@ int main(){
             PrintMatrix(dim[0], dim[1], result);
             break;
         case 3:
-            //Zero(result);
             MulMatrix(dim[0], dim[1], dim[2], dim[3], mat1, mat2, result);
             PrintMatrix(dim[0], dim[3], result);
             break;
