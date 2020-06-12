@@ -55,12 +55,14 @@ void SubMatrix(int row, int col, float mat1[100][100], float mat2[100][100], flo
 
 //multiply two matrices
 void MulMatrix(int row, int col, int row2, int col2, float mat1[100][100], float mat2[100][100], float result[100][100]){
-
+    float ans = 0;
     for(int i=0;i<row;i++){
         for(int j=0;j<col2;j++){
             for(int k=0;k<col;k++){
-                result[i][j] += mat1[i][k] * mat2[k][j];
+                ans += mat1[i][k] * mat2[k][j];
             }
+            result[i][j] = ans;
+            ans = 0;
         }
     }
 }
@@ -139,7 +141,7 @@ int main(){
             PrintMatrix(dim[0], dim[1], result);
             break;
         case 3:
-            Zero(result);
+            //Zero(result);
             MulMatrix(dim[0], dim[1], dim[2], dim[3], mat1, mat2, result);
             PrintMatrix(dim[0], dim[3], result);
             break;
@@ -150,6 +152,10 @@ int main(){
         cin>>contMenu;
         
         if(contMenu == 1){
+            if(dim[0] != dim[2] && dim[1] != dim[3]){
+                cout<<"Dimensions not equal for Add or Subtract! Change Matrix";
+                InMenu(dim, choice, mat1, mat2);
+            }
             choice = OpMenu();
         }else if(contMenu == 2) {
             InMenu(dim, choice, mat1, mat2);
