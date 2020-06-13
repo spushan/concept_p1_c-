@@ -19,6 +19,7 @@ class Version4 {
             for(int i=0; i<row; i++){
                 for(int j=0; j<col; j++){
                     System.out.print("Input value for ["+i+"]["+j+"]: ");
+                    //matrix[i][j] = 5;
                     this.matrix[i][j] = scanner.nextFloat();
                     System.out.println();
                 }
@@ -87,10 +88,9 @@ class Version4 {
 
     }
 
-    static int opMenu(){
+    static int opMenu(Scanner scanner){
         
-        int choice;
-        Scanner scanner = new Scanner(System.in);
+        int choice = 0;
 
         System.out.println("Menu: ");
         System.out.println("[1] Add");
@@ -98,36 +98,34 @@ class Version4 {
         System.out.println("[3] Multiply");
         System.out.print("Please enter a choice: ");
         choice = scanner.nextInt();
-        scanner.close();
 
         return choice;
+        
 
     }
 
-    static void inMenu(int row, int col, int row2, int col2, int choice){
+    public static void inMenu(int dim[], int choice, Scanner scanner){
         
-        Scanner scanner = new Scanner(System.in);
         boolean isCorrect = true;
-        
         while(isCorrect){
             System.out.print("\nEnter number of rows for First Matrix: ");
-            row = scanner.nextInt();
+            dim[0] = scanner.nextInt();
             System.out.print("\nEnter number of columns for First Matrix: ");
-            col = scanner.nextInt();
+            dim[1] = scanner.nextInt();
             System.out.print("\nEnter number of rows for Second Matrix: ");
-            row2 = scanner.nextInt();
+            dim[2] = scanner.nextInt();
             System.out.print("\nEnter number of columns for Second Matrix: ");
-            col2 = scanner.nextInt();
+            dim[3] = scanner.nextInt();
 
             if (choice == 1 || choice == 2) {
-                if(row == row2 && col == col2){
+                if(dim[0] == dim[2] && dim[1] == dim[3]){
                     isCorrect = false;
                 } else{
                     System.out.println("Error: Matrix Dimension not Equal");
                     continue;
                 }
             } else{
-                if(col == row2){
+                if(dim[1] == dim[2]){
                     isCorrect = false;
                 } else {
                     System.out.println("Error: Column of Matrix 1 not equal with Row of Matrix 2");
@@ -135,32 +133,43 @@ class Version4 {
                 }
             }
         }
-        scanner.close();
+    
     }
 
     public static void main(String[] args) {
         
         int choice = 0, contMenu = 0;
-        int row = 0, col = 0, row2 = 0, col2 = 0; 
         Scanner scanner = new Scanner(System.in);
-
-        choice = opMenu();
-        inMenu(row, col, row2, col2, choice);
-        Matrix mat1 = new Matrix(row,col);
-        Matrix mat2 = new Matrix(row2,col2);
+        int[] dim = new int[4];
+        
+        choice = opMenu(scanner);
+        inMenu(dim, choice, scanner);
+        System.out.println("Enter First Matrix: ");
+        Matrix mat1 = new Matrix(dim[0], dim[1]);
+        System.out.println("Enter First Matrix: ");
+        Matrix mat2 = new Matrix(dim[2], dim[3]);
         
         while(true){
             switch (choice)
             {
             case 1:
+            {
                 mat1.add(mat2);
                 break;
+            }
             case 2:
+            {    
                 mat1.sub(mat2);
                 break;
+            }
             case 3:
+            {    
+                //long start = System.currentTimeMillis();
                 mat1.mul(mat2);
+                //long end =System.currentTimeMillis();
+                //System.out.println("Elapse Time " + (end - start) + " milliseconds");
                 break;
+            }
             default:
                 break;
             }
@@ -168,17 +177,21 @@ class Version4 {
             contMenu = scanner.nextInt();
 
             if(contMenu == 1){
-                if(row != row2 && col != col2){
+                if(dim[0] != dim[2] && dim[1] != dim[3]){
                     System.out.println("Dimensions not equal for Add or Subtract! Change Dimensions");
-                    inMenu(row, col, row2, col2, choice);
-                    mat1.setMatrix(row, col);
-                    mat2.setMatrix(row2, col2);
+                    inMenu(dim, choice, scanner);
+                    System.out.println("Enter First Matrix: ");
+                    mat1.setMatrix(dim[0], dim[1]);
+                    System.out.println("Enter Second Matrix: ");
+                    mat2.setMatrix(dim[2], dim[3]);
                 }
-                choice = opMenu();
+                choice = opMenu(scanner);
             }else if(contMenu == 2) {
-                inMenu(row, col, row2, col2, choice);
-                mat1.setMatrix(row, col);
-                mat2.setMatrix(row2, col2);
+                inMenu(dim, choice, scanner);
+                System.out.println("Enter First Matrix: ");
+                mat1.setMatrix(dim[0], dim[1]);
+                System.out.println("Enter Second Matrix: ");
+                mat2.setMatrix(dim[2], dim[3]);
             }else{
                 System.exit(1);
                 scanner.close();

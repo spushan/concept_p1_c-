@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <chrono>
 using namespace std;
 
 
@@ -15,6 +16,7 @@ float** NewMatrix(int row, int col) {
         for(int j=0; j<col; j++){
             cout<<"Enter value of ["<<i<<"]"<<"["<<j<<"]: ";
             cin>>matrix[i][j];
+            //matrix[i][j] = 5;
             
         }
     }
@@ -135,6 +137,8 @@ void InMenu(int dim[4], int choice){
 
 int main(){
     
+    time_t start, end; 
+
     float** mat1;
     float** mat2;
     int dim[4];
@@ -153,20 +157,30 @@ int main(){
         switch (choice)
         {
         case 1:
+            {
             answer = AddMatrix(dim[0], dim[1], mat1, mat2);
             PrintMatrix(dim[0], dim[1], answer);
             delete answer;
             break;
+            }
         case 2:
+            {
             answer = SubMatrix(dim[0], dim[1], mat1, mat2);
             PrintMatrix(dim[0], dim[1], answer);
             delete answer;
             break;
+            }
         case 3:
+            {
+            //auto start = std::chrono::high_resolution_clock::now(); 
             answer = MulMatrix(dim[0], dim[1], dim[2], dim[3], mat1, mat2);
             PrintMatrix(dim[0], dim[3], answer);
             delete answer;
+            //auto finish = std::chrono::high_resolution_clock::now();
+            //std::chrono::duration<double> elapsed = finish - start;
+            //std::cout << "Elapsed time: " << elapsed.count() << " s\n";
             break;
+            }
         default:
             break;
         }

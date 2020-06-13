@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <chrono>
 using namespace std;
 
 //changes the values of the passed matrix to user input
@@ -10,6 +11,7 @@ void NewMatrix(int row, int col, float matrix[100][100]) {
         for(int j=0; j<col; j++){
             cout<<"Enter value of ["<<i<<"]"<<"["<<j<<"]: ";
             cin>>matrix[i][j];
+            //matrix[i][j] = 5;
         }
     }
 }
@@ -46,6 +48,7 @@ void SubMatrix(int row, int col, float mat1[100][100], float mat2[100][100], flo
 
 //multiply two matrices
 void MulMatrix(int row, int col, int row2, int col2, float mat1[100][100], float mat2[100][100], float result[100][100]){
+    
     float ans = 0;
     for(int i=0;i<row;i++){
         for(int j=0;j<col2;j++){
@@ -56,6 +59,7 @@ void MulMatrix(int row, int col, int row2, int col2, float mat1[100][100], float
             ans = 0;
         }
     }
+
 }
 
 //menu for  the operation
@@ -132,9 +136,15 @@ int main(){
             PrintMatrix(dim[0], dim[1], result);
             break;
         case 3:
+            {
+            //auto start = std::chrono::high_resolution_clock::now();
             MulMatrix(dim[0], dim[1], dim[2], dim[3], mat1, mat2, result);
             PrintMatrix(dim[0], dim[3], result);
+            //auto finish = std::chrono::high_resolution_clock::now();
+            //std::chrono::duration<double> elapsed = finish - start;
+            //std::cout << "Elapsed time: " << elapsed.count() << " s\n";
             break;
+            }
         default:
             break;
         }

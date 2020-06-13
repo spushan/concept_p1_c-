@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Matrix {
                 for(int j = 0; j<col; j++){
                     cout<<"Enter value of ["<<i<<"]"<<"["<<j<<"]: ";
                     cin>>mat[i][j];
+                    //mat[i][j] = 5;
                 }       
             }
         }
@@ -154,11 +156,19 @@ int main(){
             mat1 + mat2;
             break;
         case 2:
+        {
             mat1 - mat2;
             break;
+        }
         case 3:
+        {
+            //auto start = std::chrono::high_resolution_clock::now(); 
             mat1 * mat2;
+            //auto finish = std::chrono::high_resolution_clock::now();
+            //std::chrono::duration<double> elapsed = finish - start;
+            //std::cout << "Elapsed time: " << elapsed.count() << " s\n";
             break;
+        }
         default:
             break;
         }
